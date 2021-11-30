@@ -1,19 +1,26 @@
 package com.shopping.cart.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserCart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private long userId;
-	private String productId;
 	private String quantity;
 	private float fare;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "productId")
+	private List<Products> product;
 
 	public UserCart() {
 	}
@@ -24,22 +31,6 @@ public class UserCart {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
 	}
 
 	public float getFare() {
@@ -56,6 +47,14 @@ public class UserCart {
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+
+	public List<Products> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Products> product) {
+		this.product = product;
 	}
 
 }

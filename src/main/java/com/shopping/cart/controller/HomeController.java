@@ -3,6 +3,7 @@ package com.shopping.cart.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.shopping.cart.model.Products;
 import com.shopping.cart.model.UserCart;
 import com.shopping.cart.model.UserDetails;
+import com.shopping.cart.service.UserService;
 
 @Controller
 public class HomeController {
@@ -55,4 +57,35 @@ public class HomeController {
 		model.addAttribute("products", cartProducts);
 		return "cart";
 	}
+
+	@Autowired
+	private UserService service;
+
+	@GetMapping("/save")
+	public String save() {
+		UserDetails saveuser = new UserDetails();
+		saveuser.setName("manmath");
+		saveuser.setUsername("man");
+		saveuser.setPassword("man");
+		saveuser.setAddress("pune");
+		saveuser.setContact("pune");
+
+		UserCart cart = new UserCart();
+		cart.setFare(1f);
+		cart.setQuantity("2");
+		saveuser.setUserCart(cart);
+
+		cart.setProduct(null);
+		UserDetails saved = service.saveUserRegistry(saveuser);
+		System.out.println(saved.getId());
+
+		return "index";
+	}
+
+	@GetMapping("/get")
+	public UserDetails find() {
+
+		return service.findOne(1l);
+	}
+
 }

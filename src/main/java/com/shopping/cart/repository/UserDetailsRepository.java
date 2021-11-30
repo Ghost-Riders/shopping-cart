@@ -3,9 +3,9 @@ package com.shopping.cart.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.shopping.cart.model.UserCart;
+import com.shopping.cart.model.UserDetails;
 
 @Repository
-public interface UserDetailsRepository extends JpaRepository<UserCart, Long> {
+public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
 
 }

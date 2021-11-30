@@ -1,9 +1,12 @@
 package com.shopping.cart.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserDetails {
@@ -13,9 +16,14 @@ public class UserDetails {
 	private Long id;
 	private String name;
 	private String username;
+
 	private String address;
 	private String contact;
 	private String password;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userCartId")
+	private UserCart userCart;
 
 	public UserDetails() {
 	}
@@ -66,6 +74,14 @@ public class UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public UserCart getUserCart() {
+		return userCart;
+	}
+
+	public void setUserCart(UserCart userCart) {
+		this.userCart = userCart;
 	}
 
 }
