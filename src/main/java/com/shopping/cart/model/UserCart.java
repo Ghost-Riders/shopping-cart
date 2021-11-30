@@ -1,14 +1,21 @@
 package com.shopping.cart.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class UserCart {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private long userId;
 	private String productId;
+	private String quantity;
 	private float fare;
 
 	public UserCart() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {
@@ -41,6 +48,14 @@ public class UserCart {
 
 	public void setFare(float fare) {
 		this.fare = fare;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 
 }
