@@ -37,4 +37,10 @@ public class UserEntityServiceImpl implements UserEntityService {
 		return userEntity.get();
 	}
 
+	@Override
+	public Optional<UserEntity> findByUsernameAndPassword(String username, String password) {
+		Optional<UserEntity> user = entityRepository.findByUsernameAndPassword(username, password);
+		return user;
+	}
+
 }

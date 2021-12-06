@@ -12,15 +12,17 @@ public class CartProductEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private float fare;
-	private int availableQuantity;
+	private float price;
+	private String prodName;
 
 	public CartProductEntity() {
 	}
 
-	public CartProductEntity(int id, float fare, int availableQuantity) {
-		this.fare = fare;
-		this.availableQuantity = availableQuantity;
+	public CartProductEntity(int id, float price, String prodName) {
+		super();
+		this.id = id;
+		this.price = price;
+		this.prodName = prodName;
 	}
 
 	public int getId() {
@@ -31,20 +33,20 @@ public class CartProductEntity {
 		this.id = id;
 	}
 
-	public float getFare() {
-		return fare;
+	public float getPrice() {
+		return price;
 	}
 
-	public void setFare(float fare) {
-		this.fare = fare;
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
-	public int getAvailableQuantity() {
-		return availableQuantity;
+	public String getProdName() {
+		return prodName;
 	}
 
-	public void setAvailableQuantity(int availableQuantity) {
-		this.availableQuantity = availableQuantity;
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
 	}
 
 }

@@ -14,8 +14,9 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>Total Quatity</th>
-					<th>Product Fare</th>
+					<th>Product Id</th>
+					<th>Product Name</th>
+					<th>Price</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -23,9 +24,10 @@
 			<tbody>
 				<c:forEach items="${ prodList }" var="item">
 					<tr>
-						<td><c:out value="${ item.getAvailableQuantity() }">Not Found</c:out></td>
-						<td><c:out value="${ item.getFare() }">Not Found</c:out></td>
-						<td><a href="products?id=${ item.getId() }">ADD</a></td>
+						<td><c:out value="${ item.getId() }">Not Found</c:out></td>
+						<td><c:out value="${ item.getProdName() }">Not Found</c:out></td>
+						<td><c:out value="${ item.getPrice() }">Not Found</c:out></td>
+						<td><a href="products?id=${ item.getId() }&di=${di}">ADD</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

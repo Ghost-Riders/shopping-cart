@@ -35,7 +35,7 @@
 	<div align="center">
 		<h2>Cart</h2>
 		<h3>product list</h3>
-		<a href="product">click to add product</a>
+		<a href="product?di=${di}">click to add product</a>
 		<%
 		UserCartEntity prods = (UserCartEntity) request.getAttribute("products");
 		%>
